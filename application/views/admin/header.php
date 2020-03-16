@@ -42,9 +42,11 @@
                 <!--li class="nav-item">
                   <a href="dashboard.html" class="nav-link">Admin Dashboard</a>
                 </li-->
+				<?php if($this->session->userdata('id')){?>
                 <li class="nav-item">
-                  <a href="login.html" class="nav-link">Logout</a>
+                  <a href="<?php echo base_url('admin/logout'); ?>" class="nav-link">Logout</a>
                 </li>
+				<?php } ?>
             </ul>
 	      </div>
   		</div>

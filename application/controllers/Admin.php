@@ -17,10 +17,11 @@ class Admin extends CI_Controller {
 		$this->load->view('footer');
 	}
 	
-	public function AdminDashboard($data=''){
-		if(empty($data)){ $data['title']='Dashboard';}
+	public function AdminDashboard(){
+		if(!$this->session->userdata('id')) return redirect('admin');
+		$data['title']='Dashboard';
 		$this->load->view('admin/header',$data);
-		$this->load->view('admin/dashborad',$data);
+		$this->load->view('admin/dashborad');
 		$this->load->view('footer');
 	}
 	public function adminlogin(){
@@ -45,13 +46,16 @@ class Admin extends CI_Controller {
 			$password = $this->input->post('password');
 
 			$user = $this->Admin_model->login($username,$password);
-			
+			//echo '<pre>';print_r($user->username);die;
 			if($user){
-				$this->session->set_userdata('username',$username);
-				$data['title']='Dashboard';
+				$this->session->set_userdata('username',$user->username);
+				$this->session->set_userdata('id',$user->id);
+
+				/*$data['title']='Dashboard';
 				$this->load->view('admin/header',$data);
 				$this->load->view('admin/dashboard');
-				$this->load->view('footer');				
+				$this->load->view('footer');*/
+					return redirect('admin/AdminDashboard');
 
 			}else{
 			$this->load->view('header',$data);
@@ -113,6 +117,11 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/add_blog', $data);
 		$this->load->view('footer');
 		
+	}
+	
+	public function logout(){
+		$this->session->unset_userdata('id');
+		return redirect('admin');
 	}
 	
 }

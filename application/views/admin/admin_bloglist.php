@@ -2,13 +2,9 @@
     	<div class="container">
             <div class="body-content">
         		<div class="row">
-                      <div class="dash-right">
-                            <div class="dash-header">
-                                <div class="dash-title">
-                                    <h1>Blogs</h1>
-                                </div>
-                                <div class="dash-nav">
-                                    <a href="<?php echo base_url('admin/add_blog');?>" class="btn btn-success">Add Post</a>
+                      <div class="dash-right" >
+                                    <h1>Blogs</h1>                                
+                                    <a href="<?php echo base_url('admin/add_blog');?>" style="position: absolute; right: 0;margin-right:39px;margin-top:-53px;" class="btn btn-success">Add Post</a>
                                 </div>
                             </div>
                             <table class="table table-bordered table-striped">

@@ -12,6 +12,8 @@ class Admin_model extends CI_Model{
 
 		if($query->num_rows() == 1) {
 			return $query->row();
+		}else{
+			return false;
 		}
 	}
 
